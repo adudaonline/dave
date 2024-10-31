@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Social Media Management Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <script src="scripts.js"></script>
+</head>
+<div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+</div>
+
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <img src="data:image/png;base64,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" alt="Logo" class="logo">
+            <h1>Osano. D.</h1><span><h1> Aduda</span></h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#pins">My Pins</a></li>
+                <li><a href="#testimonials">My Teams</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section 1: Landing Page -->
+    <section id="home" class="landing-page">
+        <div class="welcome">
+            <h2>Welcome to My Digital World,<span>Where creativity meets strategy.</span></h2>
+            <h3>Manage all your social media with ease and efficiency.</h3>
+            <p>Here, I share insights on digital marketing, content creation, web design, SEO, and more—all aimed at helping brands thrive online. Join me as we explore the latest trends, tips, and tools to elevate your digital presence and make meaningful connections in today’s digital landscape.</p>
+        </div>
+    </section>
+
+    <!-- Section 2: Social Media Overview -->
+    <section id="social-media">
+        <h2>Social Media Platforms</h2>
+        <div class="social-media-grid">
+            <!-- Repeat for each platform -->
+            <div class="social-platform">
+                <h3>Facebook</h3>
+                <img width="48" height="48" src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>Instagram</h3>
+                <img width="48" height="48" src="https://img.icons8.com/color/48/instagram-new--v1.png" alt="instagram-new--v1"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>Twitter-X</h3>
+                <img width="48" height="48" src="https://img.icons8.com/color/48/twitterx--v2.png" alt="twitterx--v2"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>Youtube</h3>
+                <img width="48" height="48" src="https://img.icons8.com/color/48/youtube-play.png" alt="youtube-play"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>Tiktok</h3>
+                <img width="48" height="48" src="https://img.icons8.com/color/48/tiktok--v1.png" alt="tiktok--v1"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>WhatsApp</h3>
+                <img width="48" height="48" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>Pinterest</h3>
+                <img width="48" height="48" src="https://img.icons8.com/color/48/pinterest--v1.png" alt="pinterest--v1"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>LinkedIn</h3>
+                <img width="48" height="48" src="https://img.icons8.com/color/48/linkedin.png" alt="linkedin"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>Google ads</h3>
+                <img width="48" height="48" src="https://img.icons8.com/fluency/48/post-ads.png" alt="post-ads"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>Google Shopping</h3>
+                <img width="50" height="50" src="https://img.icons8.com/stickers/50/google-shopping.png" alt="google-shopping"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>Google meet</h3>
+                <img width="48" height="48" src="https://img.icons8.com/color/48/google-meet--v1.png" alt="google-meet--v1"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>Google Ads</h3>
+                <img width="48" height="48" src="https://img.icons8.com/color/48/google-ads.png" alt="google-ads"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>Analytics</h3>
+                <img width="50" height="50" src="https://img.icons8.com/external-others-pike-picture/50/external-Google-Analytics-advertising-others-pike-picture.png" alt="external-Google-Analytics-advertising-others-pike-picture"/>
+            </div>
+
+            <div class="social-platform">
+                <h3>Google forms</h3>
+                <img width="48" height="48" src="https://img.icons8.com/fluency/48/google-forms.png" alt="google-forms"/>
+            </div>
+            <!-- Add similar divs for other platforms -->
+        </div>
+    </section>
+
+    <!-- Section 3: Managed Businesses -->
+    <section id="managed-business">
+        <h2>Managed Businesses</h2>
+        <div class="business-grid">
+            <div class="business-card">
+                <img src="https://cdnattic.atticbooks.co.ke/img/J593090.png" alt="Attic Books Logo" class="business-logo">
+                <h3><a href="https://www.atticbooks.co.ke" target="_blank">Attic Books Ltd</a></h3>
+            </div>
+            <div class="business-card">
+                <img src="data:image/jpeg;base64,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oNH1ds8PqqxUYZPXVAdukL9rdxPHPbGP1K0fXi2aMluka8K4bBd2eGp08aaL4807ocib5Mkk5zj37JOWn5j6kdbNeNKqew3ePw2k0++mh+PdSvgyJRsyc85x/wAJOWk8j6nts14022hbZW2fTdLbrhGxk8AIOx+5p5z1wFyz3jJkm0dJiNQ03iBp67Xy52ae2wQvZQVDZpDJNt3AOa7A4PZdeNmpjraLe8aJjbeu/GH3GmbT0EdNSPm8yrldPlxG3gAAdw1cNV1O58pYHiRZrjqDTslttcMbpnyMdulftaMHPYrrxclcWX1W6RPTeWWKems9LDUwhk0MLWFgcCMgAcFcbTu24ShuntO3m36k1BX1lBDNSXThrG1A3AZJ5491pzZaXxUrHcKxGpS+zficktXNdIY4AZA2niZJvxGAOScdScrNb0/pWaPWmlaq53CgvVnkijulA8FjZchkrQc7SR07Z912wZopW1L9SrMNvHVXaoaxgtzaVxxvfJKHNb3wB1/ZcNVjpZZnoJ7hfC6vpiKGCLbTvZUFri4/mJDcemAOe6neo8CPQaYutq18bvaKeP8ADJotlRG+oO9xPUjOc8hp5PdaJzUvg9F+4V15XZdPXWTxGbfnUsJt/wAOYXNMo3n5SOmOn3SMtI4/0/fZrzt5YNNXfTGpqr8LZFLYKv5nQul2vhd3aMY9vpjsmXNTLij1fdH/ACRExKi26fvNLrm8Xmaggkoq+PY2MTjdjDRyMexS+WlsFccdwa87SezC6GrqHV9PHTUzGNZTRsl3kj1LuBz0WefTrws3CqCAgIPMIGAg9QeY4QEDCjQYU6DCAmgwo0GFIY5UaDCaHqkEHgGOyBjhATQJoAMJoMJoeoCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIP/2Q==" alt="Jamii Eyecare Logo" class="business-logo">
+                <h3><a href="https://www.jamiieyecare.co.ke" target="_blank">Jamii Eyecare Clinic</a></h3>
+            </div>
+            <div class="business-card">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAMAAzAMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYDBAcCAf/EAEMQAAIBAwMCAwUDCQYFBQEAAAECAwAEEQUSIQYxE0FRByJhcYEUkaEXIzJCUlSUsdIVYsHR4fBEcoKiwhYzNDZTJP/EABkBAQEBAQEBAAAAAAAAAAAAAAACAQMEBf/EACURAAICAgICAgIDAQAAAAAAAAABAhEDIRIxE0EiUQQyFENhI//aAAwDAQACEQMRAD8A59SlK0kUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlZ7G0lvruK2t0DSyNhee3+lG0lbG+kYKV0GH2aSzWjsmoqJxIVTMZ2MAPv71oz+zTXYydjWsuB5SYz99cP5GN+y/FP6KZUjoOk3GtX62tqm4/pOxHCL/sU1fQ9T0dgNRtZIlPZ8ZU/UVJ9NX507RtRkjlMUjzQruQ4Yc5+7/KqlP43ExRp7LBquj9KQzJZ20xhvYiAI3JImzwUyfP0+OKo+rWD6bfSWzkED3kYeansamb+MXWoR3hlVjOjhthyySKM5x5HtzWPq67j1CPSb5Y/Dea12yr5B1Yg/wAqjGnHtlTor1KUr0HMUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoAfj2q79CaUYGXWJWRkkVkjT9YHIGf5VSOcgjNdX9ntmZtMsS53LGvilccDJ90V5/yJcYHTFG5E9rEc8C2JjfYse4sNxAZiOxx5c190K4umSRLiTxFD7UJ74xzXrUJjNfELIQsZwyj1rOwWC3fBBKgqDtxlm7/hXy21xPZVAzxXcTwX0CywyHaVK8EH1Fc36h6Sls7jWP7MAfToVR3Ut7yHuAPXGa6Lasu8yyKPDhTeTnHYVDa7P9m6Pu7mdtj38mGcDkBzx8+AK64ZOLpEZIqSOXaRFPf3Nvawj3pS0YYEDIC7iCfpWTV7XUI7Cxlu4HS1KMIZDyDliT+Nb3SskFpqCyKVLRRS+GDyWkPuriup2sUS2EWmz263ECIEKFc+XevXlzeOXRxhj5I4RzSrx1907p2jhZrQeAXYbEDEjHPke2P8ao+MV6Mc/IrRxnHi6FKUroYKUpQClKUApSlAKUpQClKUApSlAKUpQGS3ga5mjhjBLuwXj0Jrt3Slkljpr3B5ZyFXBIyi8Dj55rm3QmmxXN6by4dQsLhUBOME+Z+Fdia2D2ghhOEAAU+oHyr535k7fFHqwQ9kbCXRzLlC3d8jmtk3lvGwguGLSMnisQvABPnXnw/DuUgdl3v2B9POsU8RmvsOpBZgBkfq/wCVeLs7jWY0uIIrKLA+1uN2eBsHJqE9pMqR6TYWZGfGuAqqBgDA4P0z+FTmnuL3Vbm6GfCt/wAxF/5Go7qPSRrF/HEsrYHL+YQEY4+PeumN1NJkyutFT9n+h29zqEmoyljBZyYDEe67eR+nf7qv1ku65QMD5v8AM15srSDT9Ois7KNUhyeMZwM+vrWeNvDt5ZEUhydignOCeOPhTNkeSVmQjxRzv2rTh7u3Gctg7VPoPP61Qan+trw3XUNwufcgxEoHljvUBX1MEeONI8mR3IUpSuxIpSlDBSlKAUpW1YIHY5IAyvv7N5QeZA9f9axujVs1aDntzUheWhe6le1hMVqCPfkBRewzjPxzwK8Q2CzSDbcRNCD+ckGfcHfOD37Gs5IcXZpUqXe20j7PJLG9+VU8Phcdu2O9YrTSpLiB5SzooX82WTAf69vKsU4lcGRtK272yWC+ezt5HmKna2Vwc8Hy8sGtyDSILhI5bW+WWIn84NpDR8Z8+/anNVZnBsiKVKR6RLNOUh3MP7q5PzPYD6msF5Zw2R23MssLZ7tGNv3hsU8kWHCRt9Las+l6mnKeBMwSbeuQFz3+Yrpk2qaAuSmvpFnyR2/GuXQ6daXSAQanG0p7LJEVH869t09eRM/ibPCCFhOhDR/LPlXnyY8eR9nWLlFHSouo7OGZ/D161Krwizbm3j4k5I+lbjdZ6alrNI7qXjQlTE6urHHGOc9/hXHo7OF7WOYXSo7tt2PGRz8/OtgaXGtnuDK0+TvfxVVYz6FcZPzrm/xsd9leSf0dv0CO3WwQ20qSlxvd0cMCx79qIpsbUmU5nnfG7B7ntmuMw6fJFbGWGC9xjLGOUIrH1AOCfurXt9cuYJgttf6hDJ2K+NnB8uOK5/xVJtpl+VrtHbpYZQwATKgYBXmvmpuLS0Y7QscUTOceR/3mubLq3U9naGY6xM0wOfDfa67PUj/eKi79766vzZ3VxqU8z87mnCqwxnOMHjvUx/G32bLJrSIC7mNxdTTscmRyxPzrF2qVENnDbXESPBcXW8BCW24Xz2+RNeLa2sIbd5NRaQHssccqk/PAz+NfRWRdHlcG9kb5ZpUncyadEu37CysPJpSX+p4A+6sdpbWt/dxQ2cpSSRwGSQg4HqCO/wBa3mvZnF+jQp548/SpOG3s7GUC/BnnA4gXKr9T3ye+BUwl5Zf2eWutIit4ywVWABGcEjI8/L76mWSukVHHfbKpSpVf7GmQTMk0UbZz4LZ2sOSDweMedZTa9PTktFfTKo42grx9/NPMkPGyF+GPrW3tiljUCVkWOMtIe4A7cD17D7q1PKtlZIlgQsG7bGAUAEc7ucd+3n5VU+iEdN6J07Q9Z0nbeabazXludrubcLkeRI8m9fv86rUms2jz3Udj0zoyhLlrfa8OSwBbkkH+76edWv2ZyLHo0ZlA8aWaVZJDyWKsAo/H8ap/2mDTtVmY2M3hMWmknAZt25ycnPAAz88ivCn85WeqlxRnstX6auJDFq3TljGgOHlstyFOe5BwcfI5qY1vpWPRYotb0SeSexjQGaB23Foj3ZW7njHfmqWtr9onbTLC3Muol2jeOJPI588nC7SPwronUWpp050mmmzSK8wthboPOViuCQP2R6/DHciqyLa4syJWlSzl1fTriCQSBg+3gcqF4BHkQTj61DWNtKrm2sUdpZ5W3Mi5McW7aD9e1SFlGtjZ+MqGIxxbIYyw35YDLEeXNT/RsgsbPdbIGvbxCwaUcRRKcKx8/InHqa23FaNdPZrajfQ9NPHZQWUN1fGPKQN7yxD1f4/D8a04equo7m/itftEeDw+bHfFn9ngdvLOai7h7/U7y6nMojMk5V5IlG6TBwS2ORgDjPFebaWC4Zo7VLxVQe/dCdgVH7RGcY+mK2MEkY27LP8A2HpfVK3VvHBFpuu24ywtz+alH7W3/ZFV/wCxtcSyadqkRS+tiVkwCpx5EYGD9akOlAketW1/DKscwLw3SjgEHs2PLy4qR9pcfhLp+r2sjRSMfs9wy8b+M/5/fUKXz4tm1qypKngv9hiVJ42yFuFJI5OSuexPHfvUt0vpU95cTXd3GiwQqXjdyREB5tnBz/jUdZQGW6S1UbRdyBMeg7sfh7oq2dU6lcDpeNLCKEWLyC3USADxcd8+ij4966Tk9RIir2RTdXXCMf7Fto47eLIa7eANLKf7vfj4eVZLHXNRv7KS4161ttQsYz+chnttkgHqrYANQTo1tul1Ked0GFWGFtg3YyRheMD4Vk3RvBFLPHNFbysFeKWUurIe0ikk4xTikqK32WPWNHjtLBNY0lnu9Gmw7oxLSQKRgsuDz8Qe1VrRl8SWe3mkkRSQ8FzvG5SO3B/SGDzir70Ptt9MaxlcT2wkcJu53RtgjP1Jqj3tmul9QRRFvctbpocnyB/Qz8OQPpUQldxZr00yY9n9s8PVt5YX8UM5lgMmWjUg4IwR6ZDVsdfiym1ixt7GGALCskkngxhfeXkDOPUCsnTz+D1sGVdpXT/1/wDnTNeetdClueobS00cBpdQQvMzAfm1B5JP7Pb64qFL/om36DikmiD0fSLq+1dYnwi28yXc0rxriFAdzbm5ByOAM/GpK71i31nVpn0+KO00zT8OHjhVZJmPAyccfL/Gti+l0nS7U6FJcssDv+cZi2+7cHBeRhnjPA8uB5doddOh0uG8jimYrdGMKCnIKljgebYwMeuarnyChWzW07T2urrUJ5I2FrJvRXnAJ8TuXzjsuDz8a3ILS1ksrvqG/VrrT7CFFt7VhtEkjMQN/P6I4PfsRWO+1CSa3EFtpsxTYFc5XcI/MBRzlvM1J9E3FtPb3em6z71rrKeLEAexQ7WC8fqgIw8xtJ8sVTcq5B1+qNL+1NahiS7k3w3pfYiRKI1SEA8AKOATkgnuQKjpeq7+QhruxsLpiMrLdWSl2X4njPzqX1jo7XrALHpbw6jAr7UKuomB2gY2scE454PyAGBXvSZNTWySOXTQJIyyspZ0ZTkn3lPYnOfkRWqSS1TJ42UOpTQImvJp7IojRSxFsyfoxsOzH5ZNRdS2hyNHHdoySCO4iMQmVCQj9xn4V6sn6nGH7F/6OkjfTrQ2jN4RvpyhPdlDJ/Pv91QGsdTX4nuSmk6G8PjsCslqzNjeQpbJAOcckcZqy+zKDGjRBmRvCnnwUYMD/wC35+lU28jimuJxb3LXU5mfMfBKDexCgZGcZ++vBGnkZ6d8SdseubyzkmhfQ4jZD3WazUwuR5kDufvFfL/pODWml1Tpz7TkpuVr6Z3Mj98Luy3GfM45qtaXqJjmkjuZ3itFQ+Ks8mWY442p2HPwroPs+Saw6aMlwhiF1dSS28R7hD24qsnw+SMj8tHOrYXENqZUu51njLePF4gUx99wIB3A1fuj7QroluYnMk0uWdmOSCM55+ZH31VtTaG91bWY9OkQTPOWcAAtJiMAhc/3t1S3Q+twabdjTNSmEXitvjH/AObMACrnsM9/oK3I24WgtMhtMe3mfwEhhTwMsW8P3hIHIbJ8wQa0dbury+DwXFozz2lwT4qx4CJ+qOKmNU0a40rqO8l01o2LSEhZWyjhuSvqMZqI1S2uZpXndp7aSUf/ANK7z4TAfskeXzqo7dmP9aN/QYvAsopvBPj3EjliBuLjHBAHxqw9WXTR6NDczTYjbCDbFvxIw77Twe2PrWr0RYTapdfaR/8AFs12rIFwpb0UfDvmtn2gX8b3FtYROMQuvJI4c/6VyfyyUWv1KppcK3mp2Ad3xIwHvcMCQcDirl1oYIdHsXmjEkEd3tww4GRhcjz5qnMLj7RNKZoxK3vbgNotyp4JGc4+lXG5u7Dq3o25SOVVnhIkkjB2lWB7jPkflVT7TJj0Vr7Tc2emG/sliR2CNMI4xjbnDECoSSCS71febN44rqVfzbKVLrn19MZPFS8VvqNvYNYtGslkRh9rfnowfIHOKjYkewullknlZgNkCygtIAfIDOM/L/WukKVkz9F10CTw72RIwVjG8KdpK8EMoz61D9RpBf8AVt9bK8aTSupkLqCCoAyBkEfdV06esDomi/a9SCo5XxZk9M/q5+4Vz29u/G1e9u1mWKSSMid8Z2DHJAz38q4Y9yZcuid0Wa3XWPssSOxjs22yye+2zcnGT/LmpzUOoZNGutODCF7SRXabg+KFDfpKfRe5HzxVa6NgZOp7a3M8jwmzkASVQGADIQeO4x51ve0vEGraHgYQKyevBOP8aON5OLNctWZ+r9At9QH2mxJlD7ZXRApEw74VuSM7s4+OPMZpt2Hu0dpySsoCWa2jbkd8+8GPfPbIOKsNrrLR3B0JQ8bDBtwG5xgnw8jn0Ix8aj9ds5rDT57i0iutsl0JnmfvGe2QeMkn6Dz71UPjpmNfRHvZ20FpqKWVukYjCq3j58QOATwcHHrxxnzr1ZicrE93PFFE4WSUyymJi+co6MOQ5BUk+eOQaR2zTW0Yj+xXsaOZnffteUdwGG3I9Mdq2NYs721uo7/UY1kt57Yva3C8xtIw3cg8KcHABzyBXT7TJRN22u3FtPHZ6nZy3RkBCT28IO9fR4xx8fd9099uTVht9Q0DUY/FvrbT7qWM+HudINyAfqkSYYEHPG0fLzNMtdRsDqSQW7SRoRmCfxyysxHZkJwD5fStO66Ve7naS0uo7TylhmJ92TucY8uRXHhGTqWi3pWVWtqzl8KKfIJRlKNjyBVhn78Vq16jdo23IcHzP+nnX0ns8fRfuiOr9L0TRlsrpLl7hp2ciKLIAOMDJ+Va7/8AplLhrtX1WJZGd9kkK4945Pc88/dVLM8pUDdt+CgL/KsqXsgWFJI4pVhyI/FUkj7j2rzvAttHVZPsvkt307bXNtdS6Pf6ldMgMW8JzjgZAI/HPatTqfqzWrlXjttPNhHgJ4md7gegPYVTLq8uLmczyysZDxuU4wPQAdhX1ry6KBHlLp6MaLB03s15V6JiyOn3UlnAkYWJR+c93G1scHd65+J718jmN4r28RhdPFeVjk7mB/VK/wCPwqDLue7EL6DtXlGZCWRmVh2I4rp47I5ls0S4vIdKuYr1bO900HEkV4pLbh+yf0q8R3HTZdZl0eKYDkRy6g6r9xXP41WIkllcRxB5Hc8KoJJrdk0LVogpl066G7ge5UPHFPbN8ll3g62lS1SzjSztSAQiWzKVUfPPH3ZqspPFqM/iTRrco2R4jEjweeW7+dV48FlIIIOCPMGtuLS7+4hE0FjPLG3Z0QkfhRYYw2PI+jegnH2Wa6uJVeXxVRS/6yryAceVe7t7iXZfRMsTySe6Y3JC54259M+vFRrafdrcJbvaTCYjcI9nJ+OKyPpmqLEVexuxGvJyhAFU4IKbLPqd5aFYP/Umn2M10y4We1d4XI+JUEV807V9M0iUT6VpVgk2eZ573xGx8AQBmqYSScsSTn9LNZLe2muZfDt4JJpCf0Yxk1PhVbY8jfouut9XSanAoe4VYy+1Qvr5nz4Hrn5VCrLa2sKST2giLkxPh9xlXHLEZ9ajLjSdRtY/FubC5jjP6zJxWkMHHb/OkcMVpM15Ze0XjpM22jXVzq1okUkJTZG0zbNgPJHbnsOa9Xd3Brcf2u6KypHJtS4klYYf+6P8MVUYIdR1ICO3juLkRj9BcsF+lb1vp/UFvE0Safc7dwcI8WcN6j41Dwq7vZSy/wCaN3VbSLVbiO6tLmJbhdu4bwAxB4YN5EY/AVcrrq25e1it3060uUlQpKHumYAdve93nPwrlVxHPBMwuI5I5TywcFTXjkn1NU8ClWzPLXaJ27W6sPE+yQGOxadZdiS7+FIODwODwefSp221vXINMtrGzfTPsEUCrGLkBvHTyJBPHHGKo6vIhADsqn0Yj51k+1zFYEUhfATapHmMk8/fVSxWSsiRPXt1pRk233TcaTv+tp98cN/04OPpS91ma1eOKOFo1CA+HPOrOvwJOM/7HlULLqVzLyjLAcAHwVxk/wA/xr5Bfz2ylI44HyxYtJGGJPzNPFfZnNLo1aUpXc5ilKUArZsrVLl23vt2jOAOTWtW1p4T7QS+fdXIx37jJHxxWPo1G5HZRzEQTQiAg48QnkjPBxWpqNpFZzNCs5mZT3C4FZLmU2oCw43v+cZn95x3wM/jWpPK88zSyHLscnioipXZUqLx7KYLaa41FS6pfNDthfuyA9yKwjQ+qulL4X8RmvIlbMrRSFxKvnuU1BaJpt5PYXup6ZLKt1YsrbYu5Q9z9KtvQ3W+q32rW+mahsukmO0SKuGj+Jx3FefKpKTcdnSDTVM57cy+NczSouwSO77T3GSTj8a6B7HppBe6hEJHMYiUhd3AOaqvWYtV6n1AWW3wvF529t2Ofxq0+x0H7dqbDsIl+hzV5nyxWTBVMp2qG/OsXsoS7MguH2uFbI944wfSuge065mTprS0MkgMjjfhiCfd86o971BrA1C6C6jcAeO6qoI7byAKuftTYtoGlO5O4v7xPfOyol+0C10zmkUbSSpEgBd2Cr8STiuldTW6dH9IwWmmnw7u6YLPcqMO3Hvc1ze2mNvcQ3AG7wpFkC+uDmune0fZrHSllqdgfGiRwzbOdoI5z8qvNy8kfojGlxZV/Z9q91bdQ29nJM8lpenwpY5G3KxwSDg+fFPaJosGj63mzQJa3K+IqD9Rs4IrW6Aspb3quyaEZjt2Msr+SgKfP6itz2k6zBq2vKlqweG1Qx7x2Zu5ptZlx6H9e+yO6IeWPq3SwkhXMuDg9/dPerB7Qv7SbreOPSnufHMcPh+GWwD6nHFVzov/AO2aSD3M/wD4mrJ7R9Y1Kw6neOyvJIE8CM4TA8vlmpyK81f4IWsdskva0bb7BYLKV+37yOD7xXHOfrXOLOCOeVYnlMTOwAO3IrHPPLcymWeZ5ZG7vIxY/ea8xuY5FdOCpBBNdsePjGmyJSUpWS1xp8NozxQxrduQVyxxg+uPga07+1W3RSJS29sFWGD5c/jXqG4a7ZobkjLsZAw4bIyeD8e1edT2lkKbtzZGW78AY/mR9KJSTplPi1aNOlOPLtSupzFKUoBSlKAV9BIOQcGvlKwH0kk5JJPmTXylK0G7p2q32mLILC4aHxSN5XucH+Vbh6n1NUbwWggkdSHlhhCu31qGpWcUbbPu4k+9z51MaX1PqukQLDp80cK45KxDLfM+dQ1KxxT0zLZvSatcPqJv3jtzODn/ANobSfXHrW/qHVusajbmC+lhniPZXiHun4elQVKzjE3kwOR8cetSOl65qOlBlsbgxxuMPE3vI3zBqOpVOKfZitEtN1FqUlu9vFJHbQv+mttGE3/Oon1pSsUUujbb7N3S9VutJmM9iY0m8pGTcV+XpWbVtevtYAGoNHKwGBIYwHGPLNRlKVG+XsW6oUpStMA4OR3oxLZJYk+WT2pStANKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKA73+SnpD9wuP4+f+un5KekP3C4/j5/66u9Kw0pH5KekP3C4/j5/wCun5KekP3C4/j5/wCurvSgKR+SnpD9wuP4+f8Arp+SnpD9wuP4+f8Arq70oCkfkp6Q/cLj+Pn/AK6H2V9HjvYXH8fP/XV3rywz2xQUUc+zDowTLCbK4EjKWC/bp+QP+qvr+y7oxAC9nMuc43ahMO3/AF1Jt05O5kYzRowMhhZSSyFiDnd5n55+teJOm7id1a5a1l2Aom9S2F2sM8+fNAaC+yzo9gCtjcEHkEX8/P8A318Pst6NDBTZThj2H2+fJ/76koem5lkPiSp4Z2ZVXIXaMZTbjkceZ8+1fX6dlYqQbdGR3MbYJZAw/axnP+80FEVP7Mei4IjLNZXCoMZY30/H/dWT8lXSH7hc/wAdP/XW4/TV3JBLF48SiQYQhmJtuRxH/ngc1ITaXdSQ2se6A/Zyf0icNn9b/mHfz+lBRB/kr6PH/AXP8dP/AF0/JX0eP+Auf46f+ut0dNXTH87cRlR2QF8ZyMt37kA5486mrCwa2t7eN5WYwBgNrkKQTxkeeKCinj2c9BtvxHnw3CPjVJfdY9gff4Pwry/s+6AQSFwFETbJCdVlGxvQ+/wfhVgl0i8kWcvDZNK8qNGwYqEVWyABt47feT8qwnp28DXZEtu32gFSWaTOCWJI59zv+iODz60FEK/s+9n8YlL7VEJAlJ1WUeGT23e/x9aSez72fxGUSbU8HHi7tVlGzPbd7/GfjUtB0xdwXgukuIJJIyxUSqSsm7d3Xsn6XZe/Oe/GRdCv4UKQ/YyyRLFDKxIKr+txg4Y5PPOPSgohZPZ97P4vE8QBPCUNJu1WUbAexPv8A1sx+y7o2WNZIrKd0YZVl1Ccgj1B31IJ01Mk0jp4ITZhI1mkTbypADLjbjb3HLefarDYwyW9nBDNKZZI0CtIe7kDvQUVD8lPSH7hcfx8/wDXT8lPSH7hcfx8/wDXV3pQFI/JT0h+4XH8fP8A10/JT0h+4XH8fP8A11d6UB//2Q==" alt="Uptown Vintage Books Logo" class="business-logo">
+                <h3><a href="https://adudaonline.github.io/aduda/" target="_blank">Uptown Vintage Books</a></h3>
+            </div>
+            <div class="business-card">
+                <img src="https://primehouseinteriors.co.ke/wp-content/uploads/2022/02/Untitled-design-6-1.png" alt="Homex Interiors Logo" class="business-logo">
+                <h3><a href="https://www.primehouseinteriors.co.ke" target="_blank">primehouseinteriors</a></h3>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Section 4: About Me -->
+    <section id="about">
+        <h2>About Me</h2>
+        <img src="https://scontent.fnbo10-1.fna.fbcdn.net/v/t39.30808-1/422319586_760942855903613_250601969389177833_n.jpg?stp=cp0_dst-jpg_s40x40&_nc_cat=101&ccb=1-7&_nc_sid=50d2ac&_nc_eui2=AeEZctJZV5lkrSiN1EeT3Q9JmKzoUNwNZt6YrOhQ3A1m3vtEKxfIJS_88V8UYlkm-9kRuTjB7ALvfu2LjlKrS3Nr&_nc_ohc=vpzoaLaAbYwQ7kNvgE1lcOo&_nc_pt=5&_nc_zt=24&_nc_ht=scontent.fnbo10-1.fna&_nc_gid=ACbR_ggiBM47OEDX-Kib35W&oh=00_AYAsaDOCMxyp56Ii7PhASiqsw-wjaqt4PJYw6Mgk-wHS3g&oe=6729CD65" alt="Profile Picture" class="profile-pic">
+        <p>As a skilled digital marketer and content creator, I bring a wide range of expertise across blog writing, SEO, social media management, copywriting, web design, advertising, digital marketing, and graphic design. My approach is strategic and results-driven, aiming to build cohesive brand identities, drive engagement, and boost online visibility. With a background in English grammar and literature, I specialize in crafting impactful, SEO-optimized content that resonates with audiences and enhances brand authority.</p>
+    <a href="my_cv.html/David_Aduda_CV.pdf.pdf" target="_blank">View My CV</a>
+    </section>
+
+    <!-- Section 5: Services -->
+    <section id="services">
+        <h2>My Services</h2>
+        <div class="service-cards">
+            <!-- Repeat for each service -->
+            <div class="service-card">
+                <h3>Blog Writing</h3>
+                <p>I create engaging, SEO-friendly blog content that informs and captivates readers while boosting online visibility. Each post is tailored to reflect your brand’s voice and resonate with your audience.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>SEO (Search Engine Optimization)</h3>
+                <p>I optimize your website to improve search engine rankings, drive organic traffic, and enhance online visibility. My SEO strategies include keyword research, on-page optimization, and quality link building.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Advertisement</h3>
+                <p>I develop and manage targeted advertising campaigns across social media, Google, and other platforms to increase brand exposure, attract new clients, and achieve a high return on investment.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Web Design</h3>
+                <p> I design visually appealing, user-friendly websites that provide an excellent user experience and reflect your brand’s identity. My designs focus on functionality, accessibility, and seamless navigation.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Social Media Management</h3>
+                <p>I handle your social media presence with strategic content planning, audience engagement, and performance analysis. My goal is to grow your brand’s reach and foster a loyal online community.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Copywriting</h3>
+                <p>I craft persuasive, on-brand copy that grabs attention, communicates your message effectively, and motivates action. From website copy to ad headlines, I ensure your words make an impact.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Digital Marketing</h3>
+                <p>I create and implement comprehensive digital marketing strategies that combine SEO, social media, email, and paid advertising to drive engagement, build brand awareness, and increase conversions.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Graphic Design</h3>
+                <p>I design eye-catching visuals that align with your brand identity, from logos to social media graphics, ensuring consistency and enhancing your brand’s appeal across all platforms.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 6: Skills -->
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Web Development</h3>
+                <p>Experienced in HTML, CSS, JavaScript, and various frameworks.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Content Creation</h3>
+                <p>Skilled in creating engaging and SEO-friendly content across platforms.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Graphic Design</h3>
+                <p>Proficient in Adobe Photoshop, Illustrator, and design principles.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Project Management</h3>
+                <p>Effective in managing projects using Agile and other methodologies.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Data Analysis</h3>
+                <p>Strong background in data visualization, Excel, and Python.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Social Media Marketing</h3>
+                <p>Expert in social media strategy, advertising, and analytics.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Social Media Management</h3>
+                <p> specialize in social media management, helping brands enhance their online presence through strategic content creation, audience engagement, and performance tracking. </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Blog Writing</h3>
+                <p>I specialize in blog writing, crafting engaging and SEO-optimized content that resonates with readers and boosts online visibility. </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Digital marketing</h3>
+                <p>I specialize in digital marketing, developing targeted strategies that drive brand growth across online platforms. My approach combines social media, SEO, email marketing, and paid advertising to reach the right audience, boost engagement, and maximize conversions. </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>SEO-Searcch Engine Optimization</h3>
+                <p> specialize in SEO (Search Engine Optimization), using proven techniques to improve your website’s ranking on search engines like Google. My approach includes keyword research, on-page optimization, quality content creation, and backlink building to increase organic traffic and visibility.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Section 7: My Pins -->
+
+    <section id="pins">
+        <h2>My Pins</h2>
+        <div class="pins-grid">
+            <!-- Repeat for each pin -->
+            <div class="pin">
+                <img src="pins/pin1.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin1.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin2.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin2.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin3.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin3.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin4.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin4.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin5.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin5.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin6.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin6.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin7.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin7.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin8.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin8.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin9.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin9.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin10.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin10.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin11.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin11.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin12.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin12.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin13.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin13.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin14.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin14.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin15.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin15.jpg')">Download</button>
+            </div>
+
+            <div class="pin">
+                <img src="pins/pin16.jpg" alt="Pin Image">
+                <button onclick="downloadPin('pins/pin16.jpg')">Download</button>
+            </div>
+
+        </div>
+    </section>
+    
+
+    <!-- Section 8: Testimonials -->
+     
+    <section id="testimonials">
+        <h2>Client Testimonials</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>“Excellent service! Really satisfied with the results and will definitely recommend it to others.”</p>
+                <h4>Attic Books ltd</h4>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="testimonial-card">
+                <p>“Professional and efficient! They went above and beyond to ensure customer satisfaction.”</p>
+                <h4>Jamiieyecare</h4>
+                <div class="rating">⭐⭐⭐⭐</div>
+            </div>
+            <div class="testimonial-card">
+                <p>“The team was fantastic, very responsive and detail-oriented. Great experience overall.”</p>
+                <h4>UptownVintage Books</h4>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="testimonial-card">
+                <p>“High-quality work and excellent support. I would recommend them anytime!”</p>
+                <h4>Primehouseinteriors</h4>
+                <div class="halfrating">⭐⭐⭐</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-container">
+            <!-- Left part: Contact details -->
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p><strong>Name:</strong></p>
+                <P>Osano. D. Aduda</P>
+                <p><strong>Address:</strong></p>
+                <p>00100, Nairobi, Kenya.</p>
+                <p><strong>Contact:</strong></p>
+                <p>+254769724971</p>
+                <p><strong>Website:</strong></p>
+                <p>https://www.adudaonline.github.io/aduda/</p>
+                <p><strong>Email:</strong></p>
+                <p>info@adudaonline.com</p>
+            </div>
+    
+            <!-- Right part: Message form -->
+            <div class="contact-form">
+                <h3>Message Me</h3>
+                <form id="contactForm">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="button" onclick="sendMessage()">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <!-- Footer -->
+    <footer>
+        <p>Created and managed by <span> Osano D. Aduda | &copy2024 | </span>All rights reserved.</p>
+    </footer>
+</body>
+</html>
